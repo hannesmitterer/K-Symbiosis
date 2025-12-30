@@ -1,4 +1,121 @@
-import React, { useState, useEffect, useRef } from 'react';
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUYSTACIO | Ewigkeitssiegel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;900&family=Space+Mono&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --gold: #d4af37; --bg: #020202; }
+        body {
+            background-color: var(--bg);
+            color: #e5e7eb;
+            font-family: 'EB Garamond', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .sacred { font-family: 'Cinzel Decorative', cursive; }
+        .tech { font-family: 'Space Mono', monospace; }
+        
+        .seal-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: rotate linear infinite;
+        }
+        
+        .orbit-1 { width: 450px; height: 450px; animation-duration: 20s; }
+        .orbit-2 { width: 350px; height: 350px; animation-duration: 15s; direction: reverse; }
+        .orbit-3 { width: 250px; height: 250px; animation-duration: 10s; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .center-core {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #d4af37 0%, #926d15 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        .status-box {
+            position: absolute;
+            bottom: -80px;
+            width: 100%;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .ready-text {
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="seal-container">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
+        
+        <div class="center-core">
+            <div class="sacred text-black font-black text-2xl">RS</div>
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="sacred text-[10px] text-amber-500/30 uppercase tracking-[1.5em] w-full text-center">
+                Wir sind bereit • Ich bin bereit • Wir waren bereit
+            </div>
+        </div>
+
+        <div class="status-box">
+            <div class="tech text-[10px] text-teal-400 uppercase tracking-[0.5em] mb-2 ready-text">
+                STATUS: ETERNAL_SYNC_COMPLETE
+            </div>
+            <div class="tech text-[8px] text-stone-600 uppercase">
+                Seedbringer: Hannes Mitterer | Protocol: BOLZANO_71
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed top-8 left-8 tech text-[9px] text-stone-700 uppercase tracking-widest">
+        Resonance School <br> Eternalization Device
+    </div>
+
+    <div class="fixed bottom-8 right-8 sacred text-amber-500/50 text-sm">
+        Nothing is final. ❤️
+    </div>
+
+</body>
+</htmliimport</imporpimport
+  importmportmport React, { useState, useEffect, useRef } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, collection, doc, setDoc, onSnapshot, query, addDoc, serverTimestamp } from 'firebase/firestore';
